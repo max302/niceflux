@@ -1,0 +1,16 @@
+{
+  "name"                  : "Niceflux",
+  "description"            : "A simple script to monitor Nicehash worker stats and balance.",
+  "author"                : "Maxime Rousseau",
+  "email"                 : "max@maximerousseau.com",
+
+"main"                    : "niceflux.js",
+
+ "dependencies" : {
+    "restify-clients"     : "*",
+    "node-influx"         : "*",
+    "influx"              : "*",
+    "sleep"               : "*"
+ }
+
+}
