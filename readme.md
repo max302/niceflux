@@ -72,3 +72,8 @@ Here is the output as per [documentation](https://www.nicehash.com/doc-api)
 }
 }
 ```
+
+SELECT mean("balance") AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Equihash' GROUP BY :interval: FILL(none);
+SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Lyra2REv2' GROUP BY :interval: FILL(none);
+SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='NeoScrypt' GROUP BY :interval: FILL(none);
+SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Nist5' GROUP BY :interval: FILL(none);
