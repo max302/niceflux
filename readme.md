@@ -1,5 +1,7 @@
 A simple Nicehash monitoring script that pulls API info from Nicehash and stores it to an Influx DB server.
 
+*As of now, there is no error handling. Looping the script with a shell script (it is included) works, but is definitely hacky.*
+
 ## Data model
 
 Where it makes sense, data is put in the database with the exact same variable names as Nicehash outputs via it's API. We use two different methods.
@@ -51,7 +53,9 @@ Everything we use is a child to the `result` or deeper.
 
 ### stats.provider.workers
 
-Here is the output as per [documentation](https://www.nicehash.com/doc-api)
+Here is the output as per [documentation](https://www.nicehash.com/doc-api).
+
+*Unfortunately, it is impossible to poll all the workers in one API call.* Keep this in mind if you are polling a lot, you might be rate limited if Nicehash judges that you're calling them too much.
 
 ```JSON
 {
@@ -71,9 +75,4 @@ Here is the output as per [documentation](https://www.nicehash.com/doc-api)
 	]
 }
 }
-```
-
-SELECT mean("balance") AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Equihash' GROUP BY :interval: FILL(none);
-SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Lyra2REv2' GROUP BY :interval: FILL(none);
-SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='NeoScrypt' GROUP BY :interval: FILL(none);
-SELECT mean("balance")*10500 AS "mean_balance" FROM "nicehash"."autogen"."global" WHERE time > :dashboardTime: AND "algo"='Nist5' GROUP BY :interval: FILL(none);
+``
