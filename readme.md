@@ -1,7 +1,7 @@
 A simple Nicehash monitoring script that pulls API info from Nicehash and stores it to an Influx DB server. With this data, you can use Grafana or Chrongraf to create graphs, dashboards and such.
 
 ![Dashboard example]
-(/media/samplegraphs-early-1.png)
+(https://github.com/max302/niceflux/blob/master/media/samplegraphs-early-1.png)
 
 *As of now, there is no error handling. Looping the script with a shell script (it is included) works, but is definitely hacky.*
 
